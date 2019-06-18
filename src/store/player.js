@@ -26,11 +26,11 @@ export default handleActions(
     [COUNT_BINGO]: (state, action) => {
       return produce(state, draft => {
         const { player, count } = action.payload
-        if (player === 'playerOne') draft.playerOne.count = count
+        if (player === 'one') draft.playerOne.count = count
         else draft.playerTwo.count = count
       })
     },
-    [CHANGE_TURN]: (state, action) => {
+    [CHANGE_TURN]: state => {
       return produce(state, draft => {
         draft.playerOne.turn = !draft.playerOne.turn
         draft.playerTwo.turn = !draft.playerTwo.turn

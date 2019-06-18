@@ -28,15 +28,15 @@ class ButtonContainer extends Component {
     let arr = Array.from({ length: 25 }, (v, i) => i + 1).sort(
       _ => 0.5 - Math.random()
     )
-    let tmp = 0
+    let num = 0
     let bingo = []
     let arr2 = []
 
     for (var i = 0; i < arr.length; i++) {
       bingo[i % 5] = arr[i]
       if ((i + 1) % 5 === 0) {
-        arr2[tmp] = bingo
-        tmp++
+        arr2[num] = bingo
+        num++
         bingo = []
       }
     }
