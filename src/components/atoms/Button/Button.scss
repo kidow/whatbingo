@@ -1,0 +1,15 @@
+@import '~open-color/open-color';
+
+.button__container {
+  text-align: center;
+  margin-bottom: 2rem;
+  span {
+    border: 1px solid $oc-cyan-7;
+    color: $oc-cyan-7;
+    padding: 1rem;
+    cursor: pointer;
+    background: white;
+    border-radius: 4px;
+    user-select: none;
+  }
+}
