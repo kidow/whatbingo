@@ -5,7 +5,7 @@ const CREATE_TABLE = 'bingo/CREATE_TABLE'
 const GAME_STATUS = 'bingo/GAME_STATUS'
 const CHECK_CELL = 'bingo/CHECK_CELL'
 
-export const createArray = createAction(CREATE_TABLE)
+export const createTable = createAction(CREATE_TABLE)
 export const gameStatus = createAction(GAME_STATUS)
 export const checkCell = createAction(CHECK_CELL)
 

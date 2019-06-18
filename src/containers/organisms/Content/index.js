@@ -1,22 +1,23 @@
-import { Table } from 'components/molecules'
 import React, { Component } from 'react'
+import { Content } from 'components/organisms'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as bingoActions from 'store/bingo'
 
-class TableContainer extends Component {
+class ContentContainer extends Component {
   render() {
-    const { cells } = this.props
-    return <Table cells={cells} />
+    const { tableOne, tableTwo } = this.props
+    return <Content tableOne={tableOne} tableTwo={tableTwo} />
   }
 }
 
 export default connect(
   ({ bingo }) => ({
-    isStarted: bingo.isStarted
+    tableOne: bingo.tableOne,
+    tableTwo: bingo.tableTwo
   }),
   dispatch => ({
     BingoActions: bindActionCreators(bingoActions, dispatch)
   })
-)(TableContainer)
+)(ContentContainer)

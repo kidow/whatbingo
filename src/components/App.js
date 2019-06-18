@@ -2,14 +2,14 @@ import React from 'react'
 import { PageTemplate } from 'components/templates'
 import { Players } from 'components/molecules'
 import { ButtonContainer } from 'containers/atoms'
-import { Content } from 'components/organisms'
+import { ContentContainer } from 'containers/organisms'
 
 const App = () => {
   return (
     <PageTemplate>
       <ButtonContainer />
       <Players />
-      <Content />
+      <ContentContainer />
     </PageTemplate>
   )
 }
