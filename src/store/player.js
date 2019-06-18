@@ -12,11 +12,13 @@ export const changeTurn = createAction(CHANGE_TURN)
 const initialState = {
   playerOne: {
     turn: true,
-    count: 0
+    count: 0,
+    win: false
   },
   playerTwo: {
     turn: false,
-    count: 0
+    count: 0,
+    win: false
   }
 }
 
