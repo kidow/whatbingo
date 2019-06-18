@@ -2,7 +2,7 @@ import React from 'react'
 import './Stack.scss'
 
 const Stack = ({ stacks }) => {
-  const stackList = stacks.map((item, i) => <div className={item} />)
+  const stackList = stacks.map((item, i) => <div key={i} className={item} />)
   return <div className="stack__container">{stackList}</div>
 }
 

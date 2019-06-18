@@ -1,6 +1,5 @@
 import React from 'react'
 import './Table.scss'
-import { CellContainer } from 'containers/atoms'
 import { Row } from 'components/atoms'
 
 const Table = ({ table, order }) => {

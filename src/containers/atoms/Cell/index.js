@@ -8,24 +8,19 @@ import * as playerActions from 'store/player'
 
 class CellContainer extends Component {
   onCellClick = value => {
-    if (!value) return
     const {
       isStarted,
       playerOne,
       BingoActions,
       PlayerActions,
       playerTwo,
-      one: o,
-      two: t,
       order,
       rowIndex,
       cellIndex
     } = this.props
-    if (!isStarted) return
-    // if ((playerOne.turn && order === 2) || (playerTwo.turn && order === 1))
-    //   return alert('잘못된 차례입니다')
+    if (!isStarted || !value) return
     if ((playerOne.turn && order === 2) || (playerTwo.turn && order === 1))
-      return
+      return alert('잘못된 차례입니다')
 
     if (playerOne.turn) {
       BingoActions.checkCell({ row: rowIndex, cell: cellIndex, player: 'one' })
@@ -49,8 +44,6 @@ class CellContainer extends Component {
 
 export default connect(
   ({ bingo, player }) => ({
-    one: bingo.one,
-    two: bingo.two,
     tableOne: bingo.tableOne,
     tableTwo: bingo.tableTwo,
     isStarted: bingo.isStarted,

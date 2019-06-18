@@ -7,14 +7,6 @@ import * as bingoActions from 'store/bingo'
 import * as playerActions from 'store/player'
 
 class ContentContainer extends Component {
-  state = {
-    left: 0,
-    right: 0,
-    row: 0,
-    col: 0,
-    cross: 0
-  }
-
   checkBingo = () => {
     const { tableOne, tableTwo, playerOne, playerTwo } = this.props
     if (playerTwo.turn) this.checkTable(tableOne, 'one')
@@ -65,8 +57,11 @@ class ContentContainer extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState) => {
+    const { playerOne, playerTwo, BingoActions } = this.props
     if (prevProps.playerOne.turn !== this.props.playerOne.turn)
       this.checkBingo()
+    if (prevProps.playerOne.count < playerOne.count) BingoActions.stackUp('one')
+    if (prevProps.playerTwo.count < playerTwo.count) BingoActions.stackUp('two')
   }
 
   render() {
@@ -80,9 +75,7 @@ export default connect(
     playerOne: player.playerOne,
     playerTwo: player.playerTwo,
     tableOne: bingo.tableOne,
-    tableTwo: bingo.tableTwo,
-    one: bingo.one,
-    two: bingo.two
+    tableTwo: bingo.tableTwo
   }),
   dispatch => ({
     BingoActions: bindActionCreators(bingoActions, dispatch),

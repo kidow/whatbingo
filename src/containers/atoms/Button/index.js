@@ -25,44 +25,27 @@ class ButtonContainer extends Component {
   }
 
   createArray = () => {
-    let arr = Array.from({ length: 25 }, (v, i) => i + 1).sort(
+    let random = Array.from({ length: 25 }, (v, i) => i + 1).sort(
       _ => 0.5 - Math.random()
     )
     let num = 0
-    let bingo = []
-    let arr2 = []
+    let dummy = []
+    let result = []
 
-    for (var i = 0; i < arr.length; i++) {
-      bingo[i % 5] = arr[i]
+    for (let i = 0; i < random.length; i++) {
+      dummy[i % 5] = random[i]
       if ((i + 1) % 5 === 0) {
-        arr2[num] = bingo
+        result[num] = dummy
         num++
-        bingo = []
+        dummy = []
       }
     }
 
-    return arr2
-  }
-
-  onReset = async str => {
-    const { PlayerActions, BingoActions } = this.props
-    await alert(str)
-    PlayerActions.initialize()
-    BingoActions.initialize()
-  }
-
-  checkTable = () => {
-    const { playerOne, playerTwo } = this.props
-    if (playerOne.count === 5 && playerTwo.count === 5)
-      this.onReset('무승부입니다')
-    else if (playerTwo.count === 5) this.onReset('2P가 빙고를 완성했습니다')
-    else if (playerOne.count === 5) this.onReset('1P가 빙고를 완성했습니다')
+    return result
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (!prevProps.isStarted && this.props.isStarted) this.createTable()
-    // this.checkCell()
-    if (prevProps.playerOne.count >= 5) this.checkTable()
   }
 
   render() {
