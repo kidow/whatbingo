@@ -28,6 +28,7 @@ export default handleActions(
         const { tableOne, tableTwo } = action.payload
         draft.tableOne = tableOne
         draft.tableTwo = tableTwo
+        draft.stacks = []
       })
     },
     [GAME_STATUS]: (state, action) => {
