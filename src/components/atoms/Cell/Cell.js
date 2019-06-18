@@ -3,7 +3,7 @@ import styles from './Cell.scss'
 import classNames from 'classnames/bind'
 const cx = classNames.bind(styles)
 
-const Cell = ({ children, onCellClick, index }) => {
+const Cell = ({ children, onCellClick }) => {
   const click = () => onCellClick(children)
   return (
     <span

@@ -15,7 +15,6 @@ class ContentContainer extends Component {
 
   checkTable = (table, player) => {
     const { PlayerActions } = this.props
-    PlayerActions.countBingo({ player, count: 0 })
     let row = 0
     let col = 0
     let cross = 0
