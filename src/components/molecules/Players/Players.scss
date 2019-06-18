@@ -1,9 +1,16 @@
+@import '~open-color/open-color';
+
 .players__container {
   display: flex;
-}
-
-.player {
-  flex: 1;
-  text-align: center;
-  font-size: 2rem;
+  .player {
+    flex: 1;
+    text-align: center;
+    font-size: 2rem;
+    &:first-child {
+      color: $oc-pink-6;
+    }
+    &:last-child {
+      color: $oc-violet-6;
+    }
+  }
 }

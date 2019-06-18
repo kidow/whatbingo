@@ -1,9 +1,15 @@
 import React from 'react'
-import './Cell.scss'
+import styles from './Cell.scss'
+import classNames from 'classnames/bind'
+const cx = classNames.bind(styles)
 
-const Cell = ({ children, onCellClick }) => {
+const Cell = ({ children, onCellClick, index }) => {
+  const click = () => onCellClick(index)
   return (
-    <span className="cell__container" onClick={onCellClick}>
+    <span
+      className={cx('cell__container', { checked: !children })}
+      onClick={click}
+    >
       {children}
     </span>
   )

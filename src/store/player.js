@@ -32,9 +32,8 @@ export default handleActions(
     },
     [CHANGE_TURN]: (state, action) => {
       return produce(state, draft => {
-        const { payload } = action
-        if (payload === 'one') draft.playerOne.turn = !draft.playerOne.turn
-        else draft.playerTwo.turn = !draft.playerTwo.turn
+        draft.playerOne.turn = !draft.playerOne.turn
+        draft.playerTwo.turn = !draft.playerTwo.turn
       })
     }
   },

@@ -30,7 +30,11 @@ export default handleActions(
       })
     },
     [CHECK_CELL]: (state, action) => {
-      return produce(state, draft => {})
+      return produce(state, draft => {
+        const { index, player } = action.payload
+        if (player === 'one') draft.tableOne[index] = 0
+        else draft.tableTwo[index] = 0
+      })
     }
   },
   initialState

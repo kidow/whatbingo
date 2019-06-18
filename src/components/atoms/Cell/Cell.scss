@@ -11,4 +11,11 @@
   &:hover {
     background: $oc-gray-2;
   }
+  font-size: 30px;
+  font-weight: 300;
+  &.checked {
+    background: $oc-gray-7;
+    color: $oc-gray-7;
+    cursor: default;
+  }
 }
