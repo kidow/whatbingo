@@ -9,9 +9,7 @@ import * as bingoActions from 'store/bingo'
 class StackContainer extends Component {
   checkTable = () => {
     const { playerOne, playerTwo } = this.props
-    if (playerOne.count === 5 && playerTwo.count === 5)
-      this.onReset('무승부입니다')
-    else if (playerTwo.count === 5) this.onReset('2P가 빙고를 완성했습니다')
+    if (playerTwo.count === 5) this.onReset('2P가 빙고를 완성했습니다')
     else if (playerOne.count === 5) this.onReset('1P가 빙고를 완성했습니다')
   }
 
@@ -22,8 +20,10 @@ class StackContainer extends Component {
     BingoActions.initialize()
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { playerOne, playerTwo } = this.props
+  componentWillUpdate(nextProps, nextState) {
+    const { playerOne, playerTwo } = nextProps
+    if (playerOne.count >= 5 && playerTwo.count >= 5)
+      return this.onReset('무승부입니다')
     if ((playerOne.count >= 5 || playerTwo.count >= 5) && !playerTwo.turn)
       this.checkTable()
   }
