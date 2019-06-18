@@ -6,16 +6,22 @@ import { connect } from 'react-redux'
 import * as bingoActions from 'store/bingo'
 
 class ButtonContainer extends Component {
-  onGameStart = () => {}
+  onGameStart = async () => {
+    const { BingoActions } = this.props
+    BingoActions.gameStatus(true)
+  }
 
   render() {
     const { onGameStart } = this
-    return <Button />
+    const { isStarted } = this.props
+    return <Button onGameStart={onGameStart} isStarted={isStarted} />
   }
 }
 
 export default connect(
-  ({ bingo }) => ({}),
+  ({ bingo }) => ({
+    isStarted: bingo.isStarted
+  }),
   dispatch => ({
     BingoActions: bindActionCreators(bingoActions, dispatch)
   })

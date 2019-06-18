@@ -1,6 +1,9 @@
+import bingo from './bingo'
+import player from './player'
+
 import { combineReducers } from 'redux'
-import { penderReducer as pender } from 'redux-pender'
 
 export default combineReducers({
-  pender
+  bingo,
+  player
 })
