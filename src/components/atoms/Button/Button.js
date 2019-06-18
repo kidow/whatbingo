@@ -1,10 +1,10 @@
 import React from 'react'
 import './Button.scss'
 
-const Button = () => {
+const Button = ({ onGameStart }) => {
   return (
     <div className="button__container">
-      <span>게임 시작</span>
+      <span onClick={onGameStart}>게임 시작</span>
     </div>
   )
 }

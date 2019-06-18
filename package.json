@@ -12,8 +12,7 @@
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-action": "^1.2.2",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-pender": "^2.0.12"
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "NODE_PATH=src react-scripts start",
