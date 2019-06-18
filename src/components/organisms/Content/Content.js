@@ -1,14 +1,14 @@
 import React from 'react'
 import './Content.scss'
-import { Stack } from 'components/atoms'
 import { TableContainer } from 'containers/molecules'
+import { StackContainer } from 'containers/atoms'
 
 const Content = ({ tableOne, tableTwo }) => {
   return (
     <div className="content__container">
-      <TableContainer cells={tableOne} order={1} />
-      <Stack />
-      <TableContainer cells={tableTwo} order={2} />
+      <TableContainer table={tableOne} order={1} />
+      <StackContainer />
+      <TableContainer table={tableTwo} order={2} />
     </div>
   )
 }

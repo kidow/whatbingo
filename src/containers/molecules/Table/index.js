@@ -7,8 +7,8 @@ import * as bingoActions from 'store/bingo'
 
 class TableContainer extends Component {
   render() {
-    const { cells, order } = this.props
-    return <Table cells={cells} order={order} />
+    const { table, order } = this.props
+    return <Table table={table} order={order} />
   }
 }
 

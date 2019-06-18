@@ -1,8 +1,9 @@
 import React from 'react'
 import './Stack.scss'
 
-const Stack = () => {
-  return <div>Stack</div>
+const Stack = ({ stacks }) => {
+  const stackList = stacks.map((item, i) => <div className={item} />)
+  return <div className="stack__container">{stackList}</div>
 }
 
 export default Stack

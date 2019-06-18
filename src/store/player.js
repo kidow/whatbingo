@@ -12,13 +12,11 @@ export const changeTurn = createAction(CHANGE_TURN)
 const initialState = {
   playerOne: {
     turn: true,
-    count: 0,
-    win: false
+    count: 0
   },
   playerTwo: {
     turn: false,
-    count: 0,
-    win: false
+    count: 0
   }
 }
 
@@ -27,9 +25,9 @@ export default handleActions(
     [INITIALIZE]: _ => initialState,
     [COUNT_BINGO]: (state, action) => {
       return produce(state, draft => {
-        const { payload } = action
-        if (payload === 'one') draft.playerOne.count++
-        else draft.playerTwo.count++
+        const { player, count } = action.payload
+        if (player === 'playerOne') draft.playerOne.count = count
+        else draft.playerTwo.count = count
       })
     },
     [CHANGE_TURN]: (state, action) => {

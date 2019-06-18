@@ -25,27 +25,44 @@ class ButtonContainer extends Component {
   }
 
   createArray = () => {
-    let result = new Array(25)
-    for (let i = 0; i < result.length; i++) result[i] = i + 1
-    result.sort(_ => 0.5 - Math.random())
-    // let twoDimenArray = []
-    // let x = 0
-    // let insert = []
-    // let called = ''
+    let arr = Array.from({ length: 25 }, (v, i) => i + 1).sort(
+      _ => 0.5 - Math.random()
+    )
+    let tmp = 0
+    let bingo = []
+    let arr2 = []
 
-    // for (let i = 0; i < oneDimenArray.length; i++) {
-    //   insert[i % 5] = oneDimenArray[i]
-    //   if ((i + 1) % 5 === 0) {
-    //     twoDimenArray[x] = insert
-    //     x++
-    //     insert = []
-    //   }
-    // }
-    return result
+    for (var i = 0; i < arr.length; i++) {
+      bingo[i % 5] = arr[i]
+      if ((i + 1) % 5 === 0) {
+        arr2[tmp] = bingo
+        tmp++
+        bingo = []
+      }
+    }
+
+    return arr2
+  }
+
+  onReset = async str => {
+    const { PlayerActions, BingoActions } = this.props
+    await alert(str)
+    PlayerActions.initialize()
+    BingoActions.initialize()
+  }
+
+  checkTable = () => {
+    const { playerOne, playerTwo } = this.props
+    if (playerOne.count === 5 && playerTwo.count === 5)
+      this.onReset('무승부입니다')
+    else if (playerTwo.count === 5) this.onReset('2P가 빙고를 완성했습니다')
+    else if (playerOne.count === 5) this.onReset('1P가 빙고를 완성했습니다')
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (!prevProps.isStarted && this.props.isStarted) this.createTable()
+    // this.checkCell()
+    if (prevProps.playerOne.count >= 5) this.checkTable()
   }
 
   render() {
@@ -56,10 +73,12 @@ class ButtonContainer extends Component {
 }
 
 export default connect(
-  ({ bingo }) => ({
+  ({ bingo, player }) => ({
     tableOne: bingo.tableOne,
     tableTwo: bingo.tableTwo,
-    isStarted: bingo.isStarted
+    isStarted: bingo.isStarted,
+    playerOne: player.playerOne,
+    playerTwo: player.playerTwo
   }),
   dispatch => ({
     BingoActions: bindActionCreators(bingoActions, dispatch),
