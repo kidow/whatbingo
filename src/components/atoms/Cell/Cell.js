@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { checkCell } from 'store/bingo'
 import { changeTurn } from 'store/player'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,7 +11,7 @@ const Cell = ({ children, rowIndex, cellIndex, order }) => {
   const { playerOne, playerTwo } = useSelector(state => state.player)
   const dispatch = useDispatch()
 
-  const onCellClick = value => {
+  const onCellClick = useCallback(value => {
     if (!isStarted || !value) return
     if ((playerOne.turn && order === 2) || (playerTwo.turn && order === 1))
       return alert('잘못된 차례입니다')
@@ -35,7 +35,7 @@ const Cell = ({ children, rowIndex, cellIndex, order }) => {
       )
       dispatch(changeTurn())
     }
-  }
+  })
 
   return (
     <span

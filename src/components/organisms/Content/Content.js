@@ -1,22 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import './Content.scss'
-import { TableContainer } from 'containers/molecules'
 import { Stack } from 'components/atoms'
 import { useSelector } from 'react-redux'
 import { stackUp } from 'store/bingo'
 import { countBingo } from 'store/player'
+import { Table } from 'components/molecules'
 
 const Content = _ => {
   const { tableOne, tableTwo, playerOne, playerTwo } = useSelector(
     state => state.bingo
   )
 
-  const checkBingo = () => {
+  const checkBingo = useCallback(() => {
     if (playerTwo.turn) checkTable(tableOne, 'one')
     if (playerOne.turn) checkTable(tableTwo, 'two')
-  }
+  })
 
-  const checkTable = (table, player) => {
+  const checkTable = useCallback((table, player) => {
     let row = 0
     let col = 0
     let cross = 0
@@ -55,15 +55,15 @@ const Content = _ => {
     }
     if (right === 5 && left === 5) cross++
     countBingo({ player, count: row + col + cross })
-  }
+  })
 
   useEffect(_ => {}, [checkBingo, playerOne]) // 차후 수정
 
   return (
     <div className="content__container">
-      <TableContainer table={tableOne} order={1} />
+      <Table table={tableOne} order={1} />
       <Stack />
-      <TableContainer table={tableTwo} order={2} />
+      <Table table={tableTwo} order={2} />
     </div>
   )
 }
