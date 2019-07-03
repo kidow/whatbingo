@@ -4,7 +4,7 @@ https://whatcha-bingo.herokuapp.com/
 
 ![intro](./src/static/intro.png)
 
-### This project is inspired by the Atomic Design.
+### This project is inspired by the Atomic Design, used by hooks.
 
 [Atomic Design](https://arc.js.org)
 
