@@ -2,8 +2,12 @@ import React from 'react'
 import './Players.scss'
 import { Icon } from 'components/atoms'
 import { IoIosHand } from 'react-icons/io'
+import { useSelector } from 'react-redux'
 
-const Players = ({ playerOne, playerTwo, isStarted }) => {
+const Players = _ => {
+  const { playerOne, playerTwo } = useSelector(state => state.player)
+  const { isStarted } = useSelector(state => state.bingo)
+
   return (
     <div className="players__container">
       <div className="player">

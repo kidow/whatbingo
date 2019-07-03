@@ -1,15 +1,15 @@
 import React from 'react'
 import { PageTemplate } from 'components/templates'
-import { PlayersContainer } from 'containers/molecules'
-import { ContentContainer } from 'containers/organisms'
 import { Button } from 'components/atoms'
+import { Players } from 'components/molecules'
+import { Content } from 'components/organisms'
 
 const App = () => {
   return (
     <PageTemplate>
       <Button />
-      <PlayersContainer />
-      <ContentContainer />
+      <Players />
+      <Content />
     </PageTemplate>
   )
 }
