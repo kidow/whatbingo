@@ -1,12 +1,12 @@
 import React from 'react'
 import './Row.scss'
-import { CellContainer } from 'containers/atoms'
+import { Cell } from 'components/atoms'
 
 const Row = ({ cells, order, rowIndex }) => {
   const cellList = cells.map((v, i) => (
-    <CellContainer key={i} order={order} rowIndex={rowIndex} cellIndex={i}>
+    <Cell key={i} order={order} rowIndex={rowIndex} cellIndex={i}>
       {v}
-    </CellContainer>
+    </Cell>
   ))
   return <div className="row__container">{cellList}</div>
 }
