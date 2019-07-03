@@ -1,13 +1,13 @@
 import React from 'react'
 import { PageTemplate } from 'components/templates'
 import { PlayersContainer } from 'containers/molecules'
-import { ButtonContainer } from 'containers/atoms'
 import { ContentContainer } from 'containers/organisms'
+import { Button } from 'components/atoms'
 
 const App = () => {
   return (
     <PageTemplate>
-      <ButtonContainer />
+      <Button />
       <PlayersContainer />
       <ContentContainer />
     </PageTemplate>

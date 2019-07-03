@@ -1,7 +1,54 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { createTable, gameStatus } from 'store/bingo'
+import { initialize } from 'store/player'
 import './Button.scss'
 
-const Button = ({ onGameStart, isStarted }) => {
+const createArray = () => {
+  let random = Array.from({ length: 25 }, (v, i) => i + 1).sort(
+    _ => 0.5 - Math.random()
+  )
+  let num = 0
+  let dummy = []
+  let result = []
+
+  for (let i = 0; i < random.length; i++) {
+    dummy[i % 5] = random[i]
+    if ((i + 1) % 5 === 0) {
+      result[num] = dummy
+      num++
+      dummy = []
+    }
+  }
+
+  return result
+}
+
+const Button = () => {
+  const dispatch = useDispatch()
+  const { isStarted } = useSelector(state => state.bingo)
+
+  const makeTable = () => {
+    const payload = {
+      tableOne: createArray(),
+      tableTwo: createArray()
+    }
+    dispatch(createTable(payload))
+  }
+
+  const onGameStart = () => {
+    makeTable()
+    if (isStarted) initialize()
+    else dispatch(gameStatus(true))
+  }
+
+  useEffect(
+    _ => {
+      createTable()
+    },
+    [isStarted]
+  )
+
   return (
     <div className="button__container">
       <span onClick={onGameStart}>
